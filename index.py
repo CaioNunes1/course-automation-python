@@ -19,6 +19,10 @@ driver.get(login_url)
 
 username_field=driver.find_element(By.ID,"user-name").send_keys(username)
 password_field=driver.find_element(By.ID,"password").send_keys(password)
-click_button=driver.find_element(By.ID,"login-button").click()
+login_button=driver.find_element(By.ID,"login-button").click()
+#assert not login_button.__getattribute__("disabled") #garantir que o butão não está desabilitado
 
-time.sleep(10)
+success_element = driver.find_element(By.CSS_SELECTOR,".title")
+assert success_element.text == "Products"
+
+time.sleep(30)
